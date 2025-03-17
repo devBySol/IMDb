@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Movie>
+
+<div class="row p-3 mx-5">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var movie in Model)
+        {
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4 p-3 d-flex justify-content-center">
+                <div class="bg-transparent border-0 align-items-center hover-zoom">
+                    <a asp-controller="Movie" asp-action="MovieDetails" asp-route-id="@movie.imdbID" class="d-inline-block text-decoration-none text-dark">
+                        <img src="@movie.Poster" class="card-img-top" style="width:180px; height: 250px; object-fit: cover;" alt="@movie.Title Poster" >
+                    </a>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center py-5">
+            <h5 class="text-muted">No movies found for this category.</h5>
+        </div>
+    }
+</div>
+

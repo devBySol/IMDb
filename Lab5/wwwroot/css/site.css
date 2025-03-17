@@ -1,0 +1,184 @@
+/* ===== 폰트 설정 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== 전역 설정 ===== */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* ===== 네비게이션 바 디자인 ===== */
+.navbar {
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    z-index: 10;
+}
+
+    .navbar .nav-link {
+        color: white !important;
+        font-weight: bold;
+        font-size: 18px;
+        transition: color 0.3s ease;
+    }
+
+        .navbar .nav-link:hover {
+            color: #ffcc00 !important;
+        }
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+
+/* ===== 히어로 섹션 배경 설정 ===== */
+#heroBackground {
+    background: url('https://universalpictures.ca/wp-content/uploads/2024/02/Universal_HomeMainCarousel_1920x1025-5.jpg') no-repeat center center / cover;
+    height: 60vh;
+    min-height: 300px;
+}
+
+/* 작은 화면에서 배경 이미지 변경 */
+@media (max-width: 900px) {
+    #heroBackground {
+        background: url('https://hellgatelance.com/wp-content/uploads/2025/01/Wicked_PosterMovie_Arianagrande_Xmag_140524_Cover-960x1200.jpg') no-repeat center center / cover;
+    }
+}
+
+/* ===== 작은 화면에서 네비게이션 설정 ===== */
+@media (max-width: 800px) {
+    .navbar-collapse {
+        padding: 10px;
+        border-radius: 5px;
+        flex-direction: column;
+        align-items: end;
+        text-align: end;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 5px 15px;
+        border-radius: 5px;
+        margin: 5px 0;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .nav-item.d-none.d-md-block {
+        display: none !important;
+    }
+
+    .nav-item.dropdown.d-md-none {
+        display: block !important;
+    }
+}
+
+}
+
+/* ===== 이미지 호버 효과 ===== */
+.hover-zoom {
+    transition: transform 0.3s ease-in-out;
+}
+
+    .hover-zoom:hover {
+        transform: scale(1.1);
+    }
+
+/* ===== 뉴스 그리드 및 아이템 디자인 ===== */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.news-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .news-item:hover {
+        transform: scale(1.03);
+        color: #F5C518;
+    }
+
+    .news-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.7);
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .news-item:hover img {
+        filter: brightness(1);
+    }
+
+    /* ===== 뉴스 아이템 크기 조정 ===== */
+    .news-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+        height: 415px;
+    }
+
+    .news-item.medium {
+        grid-column: span 2;
+        grid-row: span 1;
+        height: 200px;
+    }
+
+    .news-item.small {
+        height: 300px;
+    }
+
+/* ===== 뉴스 콘텐츠 설정 ===== */
+.news-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.news-title-big {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.news-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.news-meta {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* ===== 작은 화면에서 뉴스 그리드 조정 ===== */
+@media (max-width: 800px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .news-item.large {
+        grid-column: span 2;
+        height: 300px;
+    }
+
+    .news-item.small {
+        height: 150px;
+    }
+}

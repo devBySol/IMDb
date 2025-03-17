@@ -1,0 +1,22 @@
+﻿@using Lab5.Data.Models
+@model IEnumerable<Comment>
+
+@if (Model.Any())
+{
+    @foreach (var comment in Model)
+    {
+        <div class="d-flex align-items-start mb-1">
+            <div class="w-100">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-1 fw-bold">@comment.UserName</h6>
+                    <small class="text-muted">@comment.DatePosted.ToString("MMM dd, yyyy")</small>
+                </div>
+                <p class="mb-2">@comment.Content</p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p class="text-muted">No comments yet. Be the first to comment!</p>
+}

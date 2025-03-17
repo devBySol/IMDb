@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Movie>
+
+<div class="container pt-5">
+
+    <div class="d-flex justify-content-center mb-4">
+        <div class="input-group w-50">
+            <input type="search" id="searchInput" class="form-control border-warning" placeholder="Search for a movie by title...">
+            <button type="button" class="btn btn-warning text-dark fw-bold" onclick="searchMovies()">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+    </div>
+
+   
+    <div class="row" id="movieList">
+        @foreach (var movie in Model)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 movie-card">
+                <div class="card shadow-sm border-0">
+                    <img src="@movie.Poster" class="card-img-top" style="height: 400px; object-fit: contain;" alt="@movie.Title Poster">
+                    <div class="card-body text-center">
+                        <h6 class="fw-bold">@movie.Title</h6>
+                        <p class="text-secondary">@movie.Genre</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-warning fw-bold"><i class="bi bi-star-fill"></i> @movie.imdbRating</span>
+                            <a asp-controller="Movie" asp-action="MovieDetails" asp-route-id="@movie.imdbID" class="btn btn-outline-warning btn-sm">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+    function searchMovies() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let movieCards = document.querySelectorAll(".movie-card");
+
+        movieCards.forEach(card => {
+            let title = card.querySelector("h6").textContent.toLowerCase();
+            if (title.includes(input)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+</script>

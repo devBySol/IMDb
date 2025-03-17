@@ -1,0 +1,65 @@
+﻿@model Lab5.Models.News
+
+<body class="bg-black">
+    <div class="pb-3">
+        <h2 class="pt-5 text-white fw-bold">Latest Movie News</h2>
+    </div>
+    <div class="news-grid" id="newsContainer">
+        @if (Model.Articles != null && Model.Articles.Count > 0)
+        {
+            var articles = Model.Articles.Take(7).ToList(); 
+
+          
+            <a href="@articles[0].Url" target="_blank" class="news-item large">
+                <img src="@articles[0].UrlToImage" alt="News Image">
+                <div class="news-content">
+                    <h2 class="news-title-big">@articles[0].Title</h2>
+                    <p class="news-meta">@DateTime.Parse(articles[0].PublishedAt).ToString("MMM dd, yyyy") | @articles[0].Author</p>
+                </div>
+            </a>
+
+            @for (int i = 1; i < articles.Count; i++)
+            {
+                var itemClass = (i == 1 || i == 2) ? "news-item medium" : "news-item small";
+
+                <a href="@articles[i].Url" target="_blank" class="@itemClass">
+                    <img src="@articles[i].UrlToImage" alt="News Image">
+                    <div class="news-content">
+                        <p class="news-title">@articles[i].Title</p>
+                        <p class="news-meta">@DateTime.Parse(articles[i].PublishedAt).ToString("MMM dd, yyyy") | @articles[i].Author</p>
+                    </div>
+                </a>
+            }
+        }
+        else
+        {
+            <p>No movie news available.</p>
+        }
+    </div>
+
+  
+    <div class="text-center mt-4">
+        <button id="loadMore"  class="btn btn-warning rounded-circle text-white fs-">⋯</button>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let currentIndex = 7; 
+
+    $("#loadMore").click(function () {
+        $.ajax({
+            url: '@Url.Action("LoadMoreNews", "News")',
+            type: 'GET',
+            data: { startIndex: currentIndex },
+            success: function (data) {
+                if (data.length > 0) {
+                    $("#newsContainer").append(data);
+                    currentIndex += 6; 
+                } else {
+                    $("#loadMore").hide(); 
+                }
+            }
+        });
+    });
+</script>

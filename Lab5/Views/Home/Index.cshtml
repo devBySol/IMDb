@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="position-absolute container bg-light text-dark p-4 start-50 translate-middle-x">
+    <div class="row">
+        <main class="col-12">
+          <nav class="position-fixed w-100 d-flex justify-content-between align-content-center py-2 px-5 rounded-1"
+     style="top: -50px; left: 50%; transform: translateX(-50%); z-index: 1030; background-color: rgba(255, 255, 255, 0.9);">
+    <ul class="nav fw-bold" id="navTabs" data-url="@Url.Action("FilterMovies", "Home")">
+        <li class="nav-item">
+            <a href="#" class="nav-link text-dark filter-link" data-filter="top-rated">TOP 10</a>
+        </li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="action">ACTION</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="adventure">ADVENTURE</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="drama">DRAMA</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="comedy">COMEDY</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="horror">HORROR</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="sci-fi">SCI-FI</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="animation">ANIMATION</a></li>
+        <li class="nav-item d-none d-md-block"><a href="#" class="nav-link text-dark filter-link" data-filter="fantasy">FANTASY</a></li>
+         <li class="nav-item dropdown d-md-none">
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="genreDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                GENRE
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="genreDropdown">
+                <li><a href="#" class="dropdown-item filter-link" data-filter="action">ACTION</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="adventure">ADVENTURE</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="drama">DRAMA</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="comedy">COMEDY</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="horror">HORROR</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="sci-fi">SCI-FI</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="animation">ANIMATION</a></li>
+                <li><a href="#" class="dropdown-item filter-link" data-filter="fantasy">FANTASY</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <button class="btn btn-warning text-white"><i class="bi bi-star-fill"> @Model.Count() </i></button>
+</nav>
+
+
+
+
+            <div class="mt-4" id="movieGrid">
+                <div class="row p-3 mx-5">
+                    @foreach (var movie in Model)
+                    {
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-4  d-flex justify-content-center">
+                                <div class="bg-transparent border-0 align-items-center">
+                                    <a asp-controller="Movie" asp-action="MovieDetails" asp-route-id="@movie.imdbID" class="d-inline-block">
+                                        <img src="@movie.Poster" class="card-img-top hover-zoom" style="width:180px; height: 250px; object-fit: cover;" alt="@movie.Title Poster">
+                                    </a>
+                                </div>
+                            </div>
+                    }
+                </div>
+            </div>
+
+
+
+
+        </main>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let navLinks = document.querySelectorAll(".filter-link");
+        let filterUrl = document.getElementById("navTabs").getAttribute("data-url");
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+
+
+                //모든 nav에서 기존 클래스 제거 후 기본 클래스 추가
+                navLinks.forEach(l =>  {
+                    l.classList.remove("text-warning", "active");
+                    l.classList.add("text-dark");
+                });
+
+                //선택한 nav에 클래스 추가
+                this.classList.remove("text-dark");
+                this.classList.add("text-warning", "active");
+
+                //AJAX 요청보내서 필터링
+                let filterType = this.getAttribute("data-filter");
+                fetch(`${filterUrl}?filter=${filterType}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Network response was not ok.");
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.querySelector("#movieGrid").innerHTML = html;
+                    })
+                    .catch(error => console.log("Error:", error));
+            });
+        });
+    });
+
+</script>
+

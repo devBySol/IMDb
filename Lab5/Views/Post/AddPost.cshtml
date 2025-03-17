@@ -1,0 +1,35 @@
+﻿@model Lab5.Data.Models.Post
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="card-header bg-warning text-white d-flex align-items-center">
+            
+            <h4 class="mb-0">Create New Post</h4>
+        </div>
+        <div class="card-body bg-light">
+            <form asp-controller="Post" asp-action="AddPost" method="post">
+                <div class="form-group mb-4">
+                    <label asp-for="Title" class="form-label fw-bold">Title</label>
+                    <input asp-for="Title" class="form-control border-0 shadow-sm rounded-3" placeholder="Enter a catchy title" required>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="UserName" class="form-label fw-bold">Your Name</label>
+                    <input asp-for="UserName" class="form-control border-0 shadow-sm rounded-3" placeholder="Enter your name" required> 
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Content" class="form-label fw-bold">Content</label>
+                    <textarea asp-for="Content" class="form-control border-0 shadow-sm rounded-3" rows="5" placeholder="Write something interesting..." required></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-outline-warning rounded-pill fw-bold px-4 shadow-sm" style="transition: background-color 0.3s;">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\bin\Debug\net8.0\Lab5.Data.deps.json
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\bin\Debug\net8.0\Lab5.Data.runtimeconfig.json
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\bin\Debug\net8.0\Lab5.Data.dll
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\bin\Debug\net8.0\Lab5.Data.pdb
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.csproj.AssemblyReference.cache
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.AssemblyInfoInputs.cache
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.AssemblyInfo.cs
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.csproj.CoreCompileInputs.cache
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.sourcelink.json
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.dll
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\refint\Lab5.Data.dll
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.pdb
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\Lab5.Data.genruntimeconfig.cache
+C:\Users\manid\Desktop\term4\COMP4514\lab5 project1\Lab5.Data\obj\Debug\net8.0\ref\Lab5.Data.dll

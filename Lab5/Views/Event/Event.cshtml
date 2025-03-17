@@ -1,0 +1,15 @@
+﻿@using Lab5.Data.Models
+@model IEnumerable<Event>
+
+<body class="bg-black">
+    <ul class="align-items-center list-group" style="list-style-type: none; padding-left: 0;">
+        @foreach (var ev in Model)
+        {
+                <li class="m-1 bg-transparent" style="display: flex; justify-content: center; align-items: center; padding: 0;">
+                    <a href="@ev.Link" target="_blank" style="display: block; width: 100%; max-width: 1000px;">
+                        <img src="@ev.Poster" class="w-100" style="width: 100%; height: auto; object-fit: contain;" />
+                    </a>
+                </li>
+        }
+    </ul>
+</body>

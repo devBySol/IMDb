@@ -1,0 +1,14 @@
+﻿@model List<Lab5.Models.Article>
+
+@foreach (var article in Model)
+{
+    var itemClass = (article == Model.First() || article == Model.Skip(1).First()) ? "news-item medium" : "news-item small";
+
+    <a href="@article.Url" target="_blank" class="@itemClass">
+        <img src="@article.UrlToImage" alt="News Image" >
+        <div class="news-content">
+            <p class="news-title">@article.Title</p>
+            <p class="news-meta">@DateTime.Parse(article.PublishedAt).ToString("MMM dd, yyyy") | @article.Author</p>
+        </div>
+    </a>
+}

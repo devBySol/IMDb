@@ -1,0 +1,33 @@
+﻿@model Lab5.ViewModels.RegisterViewModel
+
+<div class="d-flex justify-content-center align-items-center mt-5 px-3">
+    <div class="card shadow-lg p-4 rounded-4 w-100" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Create an Account</h2>
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label fw-bold">Username</label>
+                <input asp-for="UserName" class="form-control rounded-3" placeholder="Enter your username" />
+                <span asp-validation-for="UserName" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label fw-bold">Email</label>
+                <input asp-for="Email" class="form-control rounded-3" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label fw-bold">Password</label>
+                <input asp-for="Password" type="password" class="form-control rounded-3" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label fw-bold">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control rounded-3" placeholder="Re-enter your password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+            <button type="submit" class="btn btn-warning w-100 py-2 rounded-3 fw-bold">Register</button>
+        </form>
+        <p class="text-center mt-3 mb-0">
+            Already have an account? <a asp-controller="Account" asp-action="Login" class="text-decoration-none text-primary fw-bold">Login</a>
+        </p>
+    </div>
+</div>
